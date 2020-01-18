@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragment :: head"></head>
+<body class="calendar" th:object="${toDos}">
+<nav id = "body">
+
+    <header class = "calendartitle">
+        <h3 class = "calendarbutton" value = "list" >ToDos List</h3>
+        <a href = "/list/add">
+            <button class = "button" type = "submit" value = "add" >Add A ToDo</button>
+        </a>
+    </header>
+
+    <p th:unless="${toDos} and ${toDos.size()}">No ToDos</p>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+    <table id="myTable" th:each="toDo : ${toDos}">
+
+        <tr class="header">
+            <th>
+                <h3 th:text="${toDo.day}"></h3>
+            </th>
+        </tr>
+        <tr>
+            <td th:text="${toDo.title}"></td>
+            <td th:text="${toDo.time}"></td>
+            <td th:text="${toDo.completed}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+</nav>
+<a href = "/">
+    <input class = "button" value = "Logout" />
+</a>
+<br>
+<br>
+<br>
+<br>
+<footer th:replace="fragment :: footer"></footer>
+</body>
+</html>

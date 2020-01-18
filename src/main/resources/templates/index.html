@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--Welcome screen-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragment :: head"></head>
+<body>
+<header th:replace="fragment :: header"></header>
+<div id = "body">
+    <br>
+    <div class = "logo">
+        <img src = "skedulelogo.png" alt = "Skedule ToDos Logo">
+    </div>
+    <br>
+    <br>
+    <div>
+        <h3>Welcome Back!</h3>
+        <a href = "/login">
+            <button class = "button" value = "Login" >Login</button>
+        </a>
+    </div>
+    <br>
+    <br>
+    <div>
+        <h3>Hello New User!</h3>
+        <a href = "/register">
+            <button class = "button">Register</button>
+        </a>
+    </div>
+    <div class="push"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<footer th:replace="fragment :: footer"></footer>
+</body>
+</html>

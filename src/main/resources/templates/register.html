@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--Register screen-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragment :: head"></head>
+<body class="container">
+<header th:replace="fragment :: header"></header>
+
+<div id = "body">
+    <form method="post" th:object="${users}">
+        <div class = "form-group">
+            <label th:for="*{name}">First Name</label>
+            <input type = "text" th:field="*{name}" id = "name" class = "form-control"/>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class = "error" ></div>
+        </div>
+
+        <div class = "form-group">
+            <label>Email</label>
+            <input type = "email" th:field="*{email}" id = "email" class = "form-control" />
+            <div  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class = "error" ></div>
+        </div>
+        <div class = "form-group">
+            <label>Password</label>
+            <input type = "password" th:field="*{password}" id = "password" class = "form-control"/>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class = "error" ></div>
+        </div>
+        <div class = "form-group">
+            <label>Verify Password</label>
+            <input type = "password" th:field="*{verify}" id = "verify" class = "form-control" />
+            <div th:if="${#fields.hasErrors('verify')}" th:errors="*{verify}" class = "error" ></div>
+        </div>
+        <div class = "submitbutton">
+            <button class = "button" type = "submit" value = "Create Account" >Create Account</button>
+        </div>
+    </form>
+
+    <!--log in button-->
+    <div class = "bottombutton">
+        <p>Already Registered? <br> Login instead!</p>
+        <a href = "/login">
+            <button class = "button" type = "submit" value = "Login" >Login</button>
+        </a>
+    </div>
+</div>
+
+<footer th:replace="fragment :: footer"></footer>
+</body>
+</html>
