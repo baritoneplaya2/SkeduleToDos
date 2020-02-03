@@ -23,12 +23,12 @@ public class ToDos {
     private String time;
 
     @NotNull
-    private String completed;
+    private Boolean completed;
 
     @ManyToOne
     private Users users;
 
-    public ToDos(String title, String day, String time, String completed) {
+    public ToDos(String title, String day, String time, Boolean completed) {
         this.title = title;
         this.day = day;
         this.time = time;
@@ -73,11 +73,11 @@ public class ToDos {
         this.time = time;
     }
 
-    public String getCompleted() {
+    public Boolean getCompleted() {
         return completed;
     }
 
-    public void setCompleted(String completed) {
+    public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 }

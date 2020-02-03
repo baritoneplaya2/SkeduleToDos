@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value="ToDos")
+@RequestMapping(value="")
 public class ToDosController {
 
     @Autowired
@@ -24,10 +24,10 @@ public class ToDosController {
     private UsersDao usersDao;
 
     //    list view
-    @RequestMapping(value="")
+    @RequestMapping(value="list")
     public String list(Model model, ToDos toDos) {
-        model.addAttribute("title", "ToDos");
-        model.addAttribute("events", toDosDao.findAll());
+        model.addAttribute("title", "List");
+        model.addAttribute("toDos", toDosDao.findAll());
         int toDosId = toDos.getId();
         return "/list";
     }
@@ -37,7 +37,7 @@ public class ToDosController {
     public String add(Model model) {
         ToDos toDos = new ToDos();
         model.addAttribute("toDos", toDos);
-        model.addAttribute("title", "ToDos");
+        model.addAttribute("title", "ToDo");
         return "/add";
     }
 
@@ -52,28 +52,4 @@ public class ToDosController {
         return "/add";
     }
 
-//    //    view page
-//    @RequestMapping(value="/view")
-//    public String view(Model model, ToDos toDos, int id) {
-//        model.addAttribute("title", "ToDos");
-//        return "/view";
-//    }
-
-//    //    edit/add page
-//    @RequestMapping(value = "/edit/{eventsId}", method = RequestMethod.GET)
-//    public String edit(Model model, @PathVariable int id) {
-//        model.addAttribute("events", eventsDao.findById(id));
-//        return "/add";
-//    }
-//    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-//    public String edit(@RequestParam int id, @RequestParam String eventsTitle, @RequestParam String eventsStartDate, @RequestParam String eventsStartTime, @RequestParam String eventsEndDate, @RequestParam String eventsEndTime) {
-//        Events events = (Events) eventsDao.findById(id);
-//        events.setTitle(eventsTitle);
-//        events.setStartDate(eventsStartDate);
-//        events.setStartTime(eventsStartTime);
-//        events.setEndDate(eventsEndDate);
-//        events.setEndTime(eventsEndTime);
-//        eventsDao.save(events);
-//        return "redirect:/calendar";
-//    }
 }
